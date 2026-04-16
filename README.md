@@ -12,6 +12,7 @@ As file_find_* has global state, asset avoids spreading its use over several fra
 You can use either use folder_crawl, or FolderCrawler-construct directly.
 folder_crawl queues up the requests, so only one crawler is active at given time. Only accounts crawlers dispatched with it.
 
+The result is structure made out of Folder and File -constructs, Folder containing arrays for Folder and File contained within. 
 
 ## Example of uses:
 
