@@ -1,6 +1,8 @@
 # FolderCrawler
 ## [GameMaker] Asynchronously finding all folder and files within given path.
 
+[On Itchio](https://terohannula.itch.io/foldercrawler)
+
 This asset can be used to crawl out larger folder/file-structures without making the game to freeze up. 
 
 Note that sandboxing can affect where can be crawled, so check the project sandbox settings.
