@@ -59,3 +59,32 @@ self.handle = new FolderCrawler(_path, function(_status, _result, _crawler)
   // Do stuff here.
 }); 
 ```
+
+
+Optional parameters are:
+```
+budget      : Real                    --- Relative part of the frame, such as 0.5
+attributes  : Constant.FileAttribute  --- What file-types are being searched.
+paused      : Bool                    --- Whether crawler starts in paused state.
+unsafe      : Bool                    --- Whether crawler can split file_find_* function uses to multiple frames.
+action      : Function                --- What action does while crawling.
+```
+
+The resulting structure is build from following structs :
+```
+file : { 
+  type : String   ---   "file".
+  root : Struct   ---   A folder-struct.
+  name : String   ---   Name of the file.
+  path : String   ---   Absolute path for the file, includes name.
+}
+    
+folder : {        
+  type    : String  ---   "folder".
+  root    : Struct  ---   Either undefined or another folder-struct.
+  name    : String  ---   Name of the folder.
+  path    : String  ---   Absolute path for the folder, includes name.
+  files   : Array   ---   Contains file-structs, which belong to the folder.
+  folders : Array   ---   Contains folder-structs, which belong to the folder.
+}
+```
