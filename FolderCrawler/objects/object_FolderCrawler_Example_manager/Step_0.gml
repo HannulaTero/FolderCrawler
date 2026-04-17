@@ -21,5 +21,11 @@ if (keyboard_check_pressed(vk_anykey) == true)
       instance_create_depth(0, 0, 0, object_FolderCrawler_Example_03);
       break;
     }
+    
+    case ord("4"): {
+      instance_destroy(object_FolderCrawler_Example_parent);
+      instance_create_depth(0, 0, 0, object_FolderCrawler_Example_04);
+      break;
+    }
   }
 }

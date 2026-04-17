@@ -12,10 +12,13 @@ object_FolderCrawler_Example_manager.GetString(
       return;
     }
     
-    // Dispatch the crawl.
+    
+    // Preparations.
     self.timeBegin = get_timer();
     self.status = "waiting...";
     
+    
+    // Dispatch the crawl.
     folder_crawl(_result, function(_status, _result, _crawler)
     {
       self.timeTaken  = (get_timer() - self.timeBegin);

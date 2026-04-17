@@ -16,6 +16,7 @@ object_FolderCrawler_Example_manager.GetString(
     // Preparations before dispatch.
     self.timeBegin  = get_timer();
     self.status     = $"waiting...";
+    array_resize(self.items, 0);
     
     
     // Dispatch the crawl.
@@ -24,13 +25,27 @@ object_FolderCrawler_Example_manager.GetString(
       self.timeTaken  = (get_timer() - self.timeBegin);
       self.foundCount = _crawler.itemCount;
       self.structure  = _result;
-      self.current    = _result;
       self.status     = $"finished! {_status}";
-      self.index      = [ 0 ];
-      self.items = array_concat(
-        self.current.folders,
-        self.current.files
-      );
+    }, {
+      unsafe : true,
+      action : method(self, function(_item)
+      {
+        // Whether folder or file.
+        if (_item.type != "file")
+        {
+          return;
+        }
+        
+        // Check for the extension.
+        var _ext = filename_ext(_item.name);
+        if (_ext != ".png")
+        {
+          return;
+        }
+        
+        // Push into items.
+        array_push(self.items, _item);
+      })
     });
   }
 );
