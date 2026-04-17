@@ -7,10 +7,9 @@ This asset can be used to crawl out larger folder/file-structures without making
 
 Note that sandboxing can affect where can be crawled, so check the project sandbox settings.
 
-As file_find_* has global state, asset avoids spreading its use over several frame, therefore it collects all names within folder at once, and then creates structure and pushes next folders for dispatching. This does mean there is possiblity that folder just contains so many files/folders, that game still freezes. This could be avoided, if also use of file_find_* is spread over several frames, which this asset doesn't do.
+As file_find_* has global state, asset avoids spreading its use over several frame, therefore it collects all names within folder at once, and then creates structure and pushes next folders for dispatching. This does mean there is possiblity that folder just contains so many files/folders, that game still freezes. This could be avoided, if also use of file_find_* is spread over several frames. This can be done by using "unsafe" mode, then crawler trusts user to not touch file_find_* functions while it is doing its stuff.
 
-You can use either use folder_crawl, or FolderCrawler-construct directly.
-folder_crawl queues up the requests, so only one crawler is active at given time. Only accounts crawlers dispatched with it.
+folder_crawl queues up the requests, so only one crawler is active at given time. Only accounts crawlers dispatched with it. You can use either use folder_crawl, or FolderCrawler-construct directly.
 
 The result is structure made out of Folder and File -constructs, Folder containing arrays for Folder and File contained within. 
 
@@ -28,9 +27,12 @@ folder_crawl("C:\\Users\\user\\files\\github\\FolderCrawler", function(_status, 
 
 There are few convenience methods too, and crawler accepts optional parameters as struct.
 ```gml
+// Preprations
 self.path = "C:\\Users\\user\\files\\github";
 self.result = undefined;
 self.timeStart = get_timer();
+
+// Dispatching a crawler
 self.handle = folder_crawl(self.path, function(_status, _result, _crawler)
 {
   show_debug_message($"finished with status : {_status}");
@@ -41,6 +43,7 @@ self.handle = folder_crawl(self.path, function(_status, _result, _crawler)
   budget : 0.5, // Half of the frame-time is allocated for crawl.
 }); 
 
+// Using methods.
 self.handle.Pause();
 self.handle.Resume();
 
