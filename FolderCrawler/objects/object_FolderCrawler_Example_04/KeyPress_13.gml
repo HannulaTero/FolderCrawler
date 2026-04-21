@@ -20,15 +20,17 @@ object_FolderCrawler_Example_manager.GetString(
     
     
     // Dispatch the crawl.
-    folder_crawl(_result, function(_status, _result, _crawler)
-    {
-      self.timeTaken  = (get_timer() - self.timeBegin);
-      self.foundCount = _crawler.itemCount;
-      self.structure  = _result;
-      self.status     = $"finished! {_status}";
-    }, {
+    folder_crawl({
+      path : _result, 
+      callback : function(_status, _result, _crawler)
+      {
+        self.timeTaken  = (get_timer() - self.timeBegin);
+        self.foundCount = _crawler.itemCount;
+        self.structure  = _result;
+        self.status     = $"finished! {_status}";
+      }, 
       unsafe : true,
-      action : method(self, function(_item)
+      file : function(_item)
       {
         // Whether folder or file.
         if (_item.type != "file")
@@ -45,7 +47,7 @@ object_FolderCrawler_Example_manager.GetString(
         
         // Push into items.
         array_push(self.items, _item);
-      })
+      }
     });
   }
 );

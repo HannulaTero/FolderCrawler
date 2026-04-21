@@ -1,4 +1,4 @@
-/// @desc DRAW.
+/// @desc DRAW GENERAL INFO.
 
 // Right corner.
 var _x = room_width - 128;

@@ -1,19 +1,5 @@
 /// @desc INITIALIZATION.
 
+event_inherited();
 
-//
-self.timeBegin = get_timer();
-
-
-//
-self.timeTaken = 0;
-
-
-//
-self.foundCount = 0;
-
-
-//
-self.structure = undefined;
-
-
+self.label = "Example [1] Crawl the 'working_directory'"

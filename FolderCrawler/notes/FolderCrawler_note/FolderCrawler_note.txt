@@ -1,0 +1,70 @@
+===============================================================
+
+  ___    _    _          ___                 _         
+ | __|__| |__| |___ _ _ / __|_ _ __ ___ __ _| |___ _ _ 
+ | _/ _ \ / _` / -_) '_| (__| '_/ _` \ V  V / / -_) '_|
+ |_|\___/_\__,_\___|_|  \___|_| \__,_|\_/\_/|_\___|_|  
+  v1.1.0 by Tero Hannula
+
+===============================================================
+
+
+This asset can be used to crawl out larger folder/file-structures 
+without making the game to freeze up by splitting crawling into several frames.
+Crawling will result nested stucture containing structs, which represent files and folders.
+  
+  
+Use "folder_crawl(path, Callback, params)" to dispatch crawler.
+This will queue up the requests, so if you dispatch many different crawlers,
+then only single of them is active at given time. 
+This is done to avoid concurrent uses of file_find_* (which is important with "unsafe" crawl)
+but also makes frame-budgeting simpler.
+
+
+===============================================================
+
+  
+Note that sandboxing can affect where can be crawled, 
+so check the project sandbox settings.
+  
+As file_find_* has global state, asset avoids spreading its use 
+over several frame, therefore it collects all names within 
+folder at once, and then creates structure and pushes next 
+folders for dispatching. This does mean there is possiblity that
+folder just contains so many files/folders, that game still 
+freezes. This could be avoided, if also use of file_find_* is 
+spread over several frames.
+
+
+===============================================================
+
+
+By default, the resulting structure is build from following structs :
+  
+  file : { 
+    type : String   ---   "file".
+    name : String   ---   Name of the file.
+    path : String   ---   Absolute path for the file, includes name.
+  }
+    
+  folder : {        
+    type    : String  ---   "folder".
+    name    : String  ---   Name of the folder.
+    path    : String  ---   Absolute path for the folder, includes name.
+    files   : Array   ---   Contains file-structs, which belong to the folder.
+    folders : Array   ---   Contains folder-structs, which belong to the folder.
+  }
+  
+
+===============================================================
+
+
+Methods are put into separate files in this asset.
+-> First prefix with double underscore "__"
+-> secondly construct name like "FolderCrawler"
+-> Thirdly infix with double underscore "__"
+-> Finally method name, like "IsFinished"
+-> This means crawler method "IsFinished" is in file "__FolderCrawler__IsFinished"
+
+
+===============================================================

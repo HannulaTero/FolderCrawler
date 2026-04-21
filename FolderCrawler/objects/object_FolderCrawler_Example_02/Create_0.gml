@@ -1,23 +1,5 @@
 /// @desc INITIALIZATION.
 
+event_inherited();
 
-//
-self.timeBegin = get_timer();
-
-
-//
-self.timeTaken = 0;
-
-
-//
-self.foundCount = 0;
-
-
-// 
-self.status = "nothing";
-
-
-//
-self.structure = undefined;
-
-
+self.label = "Example [2] Give path to crawl";

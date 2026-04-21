@@ -3,7 +3,6 @@
   "%Name":"object_FolderCrawler_Example_03",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":13,"eventType":9,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
@@ -15,8 +14,8 @@
     "path":"folders/FolderCrawler Examples.yy",
   },
   "parentObjectId":{
-    "name":"object_FolderCrawler_Example_parent",
-    "path":"objects/object_FolderCrawler_Example_parent/object_FolderCrawler_Example_parent.yy",
+    "name":"object_FolderCrawler_Example_02",
+    "path":"objects/object_FolderCrawler_Example_02/object_FolderCrawler_Example_02.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

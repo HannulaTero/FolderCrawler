@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__FolderCrawler_GetName",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__FolderCrawler_GetName",
+  "parent":{
+    "name":"FolderCrawler Utility",
+    "path":"folders/FolderCrawler/FolderCrawler Utility.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
