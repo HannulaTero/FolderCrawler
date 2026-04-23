@@ -14,11 +14,11 @@ if (self.current == undefined)
 
 
 // Print information about current folder.
-self.printer.Print($"\n");
-self.printer.Print($"Current folder : {self.current.path}");
-self.printer.Print($" -> Folder count : {array_length(self.current.folders)}");
-self.printer.Print($" -> File count   : {array_length(self.current.files)}");
-self.printer.Print($"\n");
+self.printer.Print($"\n")
+  .Print($"Current folder : {self.current.path}")
+  .Print($" -> Folder count : {array_length(self.current.folders)}")
+  .Print($" -> File count   : {array_length(self.current.files)}")
+  .Print($"\n");
 
 
 // Draw the folders.

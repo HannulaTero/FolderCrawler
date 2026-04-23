@@ -1,5 +1,7 @@
 /// @desc INITIALIZE.
 
+self.timer = 0;
+
 self.examples = [
   object_FolderCrawler_Example_01, // "Dummy", reserve slot [0]
   object_FolderCrawler_Example_01,

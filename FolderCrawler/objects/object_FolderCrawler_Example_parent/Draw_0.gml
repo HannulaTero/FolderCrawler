@@ -10,6 +10,5 @@ self.printer
   .Print($"Time taken  : {(self.timeTaken / 1000)} ms")
   .Print($"Found count : {self.foundCount}")
   .Print($"Status      : {self.status}")
-  .Print($"---")
-  .Print($"JSON : {self.json}");
+  .Print($"---");
 

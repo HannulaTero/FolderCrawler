@@ -1,6 +1,8 @@
 /// @desc REQUEST PATH.
 
-object_FolderCrawler_Example_manager.GetString(
+
+// Ask for the path-string, async.
+FolderCrawler_GetString(
   "Give a directory", 
   working_directory,
   function(_status, _result)
@@ -13,40 +15,31 @@ object_FolderCrawler_Example_manager.GetString(
     }
     
     
-    // Preparations before dispatch.
-    self.timeBegin  = get_timer();
-    self.status     = $"waiting...";
-    array_resize(self.items, 0);
+    // Preparations.
+    self.timeBegin = get_timer();
+    self.status = "waiting...";
     
     
     // Dispatch the crawl.
     folder_crawl({
-      path : _result, 
-      callback : function(_status, _result, _crawler)
+      path : _result,
+      unsafe : true,
+      context : self.items,
+      file : function(_file, _context)
+      {
+        var _ext = filename_ext(_file.name);
+        if (_ext == ".png")
+        {
+          array_push(_context, _file);
+        }
+      },
+      callback : function(_crawler, _context)
       {
         self.timeTaken  = (get_timer() - self.timeBegin);
-        self.foundCount = _crawler.itemCount;
-        self.structure  = _result;
-        self.status     = $"finished! {_status}";
-      }, 
-      unsafe : true,
-      file : function(_item)
-      {
-        // Whether folder or file.
-        if (_item.type != "file")
-        {
-          return;
-        }
-        
-        // Check for the extension.
-        var _ext = filename_ext(_item.name);
-        if (_ext != ".png")
-        {
-          return;
-        }
-        
-        // Push into items.
-        array_push(self.items, _item);
+        self.foundCount = _crawler.DebugCount();
+        self.status     = _crawler.GetStatus();
+        self.structure  = _crawler.GetRoot();
+        self.json       = json_stringify(self.structure, true);
       }
     });
   }
