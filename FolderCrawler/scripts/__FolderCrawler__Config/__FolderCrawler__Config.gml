@@ -49,7 +49,7 @@ function __FolderCrawler__Config(_descriptor=FolderCrawler_Descriptor())
   // Select the crawling method and create iterator.
   // -> Timesource does the iteration loop.
   var _Crawl = (_params.unsafe == true)
-    ? __FolderCrawler__CrawlUnsafe
+    ? __FolderCrawler__CrawlUnsafeV2
     : __FolderCrawler__Crawl;
     
   self.timeSource = time_source_create(

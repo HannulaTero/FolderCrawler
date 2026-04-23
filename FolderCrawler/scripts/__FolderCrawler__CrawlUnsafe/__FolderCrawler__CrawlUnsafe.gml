@@ -73,7 +73,7 @@ function __FolderCrawler__CrawlUnsafe()
     
     // Preparate for the next iteration.
     self.nextName = file_find_first(
-      (self.folderCurrent.path + self.defaultMask), 
+      (self.folderCurrent.path + self.mask), 
       (self.attributes)
     );
     

@@ -72,7 +72,7 @@ function __FolderCrawler__Crawl()
     // -> Done in single step because file-finding has global state.
     // -> After all names have been found, loop will return back.
     var _name = file_find_first(
-      (self.folderCurrent.path + self.defaultMask), 
+      (self.folderCurrent.path + self.mask), 
       (self.attributes)
     );
     while(_name != "")

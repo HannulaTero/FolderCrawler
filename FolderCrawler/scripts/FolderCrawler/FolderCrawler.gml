@@ -158,6 +158,17 @@ function FolderCrawler(_descriptor=FolderCrawler_Descriptor()) constructor
   self.nextName = "";
   
   
+  // What action is being taken.
+  // @ignore
+  self.AddItem = undefined;
+  
+  
+  // Contains the found files in the current iteration.
+  // In 2nd pass this is used to determine, whether given name is folder.
+  // @ignore
+  self.currFiles = ds_map_create();
+  
+  
   // How many items have been found.
   // @ignore
   self.itemCount = 0;
