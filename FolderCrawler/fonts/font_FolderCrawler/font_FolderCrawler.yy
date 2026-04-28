@@ -119,8 +119,8 @@
   "maintainGms1Font":false,
   "name":"font_FolderCrawler",
   "parent":{
-    "name":"FolderCrawler Examples",
-    "path":"folders/FolderCrawler Examples.yy",
+    "name":"Assets",
+    "path":"folders/FolderCrawler Examples/Assets.yy",
   },
   "pointRounding":0,
   "ranges":[

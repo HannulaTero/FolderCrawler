@@ -8,8 +8,8 @@
   "name":"object_FolderCrawler_Example_dialog",
   "overriddenProperties":[],
   "parent":{
-    "name":"FolderCrawler Examples",
-    "path":"folders/FolderCrawler Examples.yy",
+    "name":"Utility",
+    "path":"folders/FolderCrawler Examples/Utility.yy",
   },
   "parentObjectId":null,
   "persistent":true,

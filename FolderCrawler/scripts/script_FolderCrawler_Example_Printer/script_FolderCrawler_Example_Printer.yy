@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"script_FolderCrawler_Example_Printer",
   "parent":{
-    "name":"FolderCrawler Examples",
-    "path":"folders/FolderCrawler Examples.yy",
+    "name":"Utility",
+    "path":"folders/FolderCrawler Examples/Utility.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

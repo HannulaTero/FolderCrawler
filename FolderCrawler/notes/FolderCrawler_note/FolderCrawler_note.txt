@@ -56,6 +56,14 @@ By default, the resulting structure is build from following structs :
     files   : Array   ---   Contains file-structs, which belong to the folder.
     folders : Array   ---   Contains folder-structs, which belong to the folder.
   }
+
+
+===============================================================
+  
+  
+  The acceptable parameters can be seen from Descriptor-signature.
+  Descriptor accepts actions and callbacks, the mehtod signatures 
+  can also be found in signature-folder.
   
 
 ===============================================================
