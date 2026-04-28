@@ -7,13 +7,12 @@ self.status = "waiting...";
 
 
 // Do the dispatch.
-folder_crawl({
-  path : working_directory, 
+folder_crawl(working_directory, {
   callback : function(_crawler)
   {
     self.timeTaken  = (get_timer() - self.timeBegin);
     self.foundCount = _crawler.DebugCount();
-    self.status     = _crawler.GetStatus();
+    self.status     = _crawler.GetStatusName();
     self.structure  = _crawler.GetRoot();
     self.json       = json_stringify(self.structure, true);
   }

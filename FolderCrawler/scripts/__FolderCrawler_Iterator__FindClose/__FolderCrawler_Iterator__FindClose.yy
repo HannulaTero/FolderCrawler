@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__FolderCrawler_Iterator__FindClose",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__FolderCrawler_Iterator__FindClose",
+  "parent":{
+    "name":"Find",
+    "path":"folders/FolderCrawler/Private/Iterator/Find.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

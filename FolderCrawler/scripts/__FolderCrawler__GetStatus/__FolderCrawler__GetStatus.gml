@@ -4,9 +4,9 @@
 * Return the crawling status.
 * 
 * @context FolderCrawler
-* @returns {String}
+* @returns {Enum.FolderCrawler_Status}
 */ 
 function __FolderCrawler__GetStatus()
 {
-  return self.status;
+  return self.iterator.status;
 };

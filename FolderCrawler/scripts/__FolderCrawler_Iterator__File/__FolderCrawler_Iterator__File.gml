@@ -5,10 +5,10 @@
 * The iteration loop should ensure given name only is file,
 * this can be achieven with attributes.
 * 
-* @context FolderCrawler
+* @context __FolderCrawler_Iterator
 * @param {String} _name
 */ 
-function __FolderCrawler__Crawl_File(_name)
+function __FolderCrawler_Iterator__File(_name)
 {
   // Create new file for given path.
   var _path = (self.folderCurrent.path + "\\" + _name);
@@ -16,6 +16,6 @@ function __FolderCrawler__Crawl_File(_name)
   self.ActionFile(_file, self.userContext);
   self.itemCount += 1;
   
-  // Add into current files.
-  self.currFiles[? _name] = _file;
+  array_push(self.folderCurrent.files, _file);
+  self.fileMapping[? _name] = _file;
 }

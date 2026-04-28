@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FolderCrawler_Descriptor",
   "parent":{
-    "name":"FolderCrawler Signatures",
-    "path":"folders/FolderCrawler/FolderCrawler Signatures.yy",
+    "name":"Action Signatures",
+    "path":"folders/FolderCrawler/Action Signatures.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -12,5 +12,5 @@ function __FolderCrawler__Resume()
     return;
   }
   
-  time_source_resume(self.timeSource);
+  time_source_resume(self.iterator.timeSource);
 };

@@ -10,13 +10,12 @@
 function FolderCrawler_Descriptor()
 {
   return {
-    path        : working_directory,
     mask        : "*",
     unsafe      : false,
     paused      : false,
     context     : undefined,
-    budget      : FolderCrawler.defaultBudget,
-    attributes  : FolderCrawler.defaultAttributes,
+    budget      : 0.90,
+    attributes  : (fa_none | fa_directory),
     init        : __FolderCrawler__DefaultActionInit,
     open        : __FolderCrawler__DefaultActionOpen,
     file        : __FolderCrawler__DefaultActionFile,

@@ -21,8 +21,7 @@ FolderCrawler_GetString(
     
     
     // Dispatch the crawl.
-    folder_crawl({
-      path : _result,
+    folder_crawl(_result, {
       unsafe : true,
       context : self.items,
       file : function(_file, _context)
@@ -37,7 +36,7 @@ FolderCrawler_GetString(
       {
         self.timeTaken  = (get_timer() - self.timeBegin);
         self.foundCount = _crawler.DebugCount();
-        self.status     = _crawler.GetStatus();
+        self.status     = _crawler.GetStatusName();
         self.structure  = _crawler.GetRoot();
         self.json       = json_stringify(self.structure, true);
       }

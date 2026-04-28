@@ -14,9 +14,8 @@ without making the game to freeze up by splitting crawling into several frames.
 Crawling will result nested stucture containing structs, which represent files and folders.
   
   
-Use "folder_crawl(path, Callback, params)" to dispatch crawler.
-This will queue up the requests, so if you dispatch many different crawlers,
-then only single of them is active at given time. 
+Use "folder_crawl(path, params)" to dispatch crawler(s).
+This will queue up the requests, so only single of them is active at given time. 
 This is done to avoid concurrent uses of file_find_* (which is important with "unsafe" crawl)
 but also makes frame-budgeting simpler.
 
@@ -26,6 +25,7 @@ but also makes frame-budgeting simpler.
   
 Note that sandboxing can affect where can be crawled, 
 so check the project sandbox settings.
+Also note platform related restrictions (HTML5 and GX for example).
   
 As file_find_* has global state, asset avoids spreading its use 
 over several frame, therefore it collects all names within 
@@ -42,12 +42,14 @@ spread over several frames.
 By default, the resulting structure is build from following structs :
   
   file : { 
+    root : Struct   ---   Which folders contains the file.
     type : String   ---   "file".
     name : String   ---   Name of the file.
     path : String   ---   Absolute path for the file, includes name.
   }
     
   folder : {        
+    root    : Struct  ---   Which folders contains the folder.
     type    : String  ---   "folder".
     name    : String  ---   Name of the folder.
     path    : String  ---   Absolute path for the folder, includes name.
@@ -58,6 +60,9 @@ By default, the resulting structure is build from following structs :
 
 ===============================================================
 
+
+The names are separated with "_" like FolderCrawler_File
+Private scripts are marked with double underscore "__".
 
 Methods are put into separate files in this asset.
 -> First prefix with double underscore "__"

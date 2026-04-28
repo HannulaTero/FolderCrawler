@@ -16,11 +16,12 @@
 * -> If single folder has lot of files/folders, this can cause stutter.
 * You may toggle "unsafe : true" to avoid this.
 * -> It will assume nothing elsewhere touches file_find_* while crawling.
-* 
+*
+* @param {String} _path
 * Read the descriptor for the possible arguments.
 * 
 */ 
-function folder_crawl(_descriptor=FolderCrawler_Descriptor())
+function folder_crawl(_path, _descriptor=FolderCrawler_Descriptor())
 {
   // Get the global context.
   var _context = __FolderCrawler_Dispatcher__Context();
@@ -38,7 +39,7 @@ function folder_crawl(_descriptor=FolderCrawler_Descriptor())
   
   // Create crawler with given settings.
   // -> If no other is active, then it will start immediately.
-  var _crawler = new FolderCrawler(_descriptor);
+  var _crawler = new FolderCrawler(_path, _descriptor);
   if (_context.current == undefined)
   {
     _context.current = _crawler;

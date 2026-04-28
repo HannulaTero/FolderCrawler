@@ -8,5 +8,5 @@
 */ 
 function __FolderCrawler__GetRoot()
 {
-  return self.folderRoot;
+  return self.root;
 };

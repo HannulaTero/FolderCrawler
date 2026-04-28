@@ -4,8 +4,10 @@
 * Crawls through folders and files, quits whenever time budget is spent.
 * Should not be called by the user. The timesource should handle this.
 * 
-* This is "unsafe" version, as it will assume being only one using file_find_* functions.
-* -> This allows splitting use of these functions, and avoid stutters with large folders.
+* This is the main loop.
+* The file_find_* are abstracted to own functions, so the underlying implementation can be changed. 
+* -> Splitting use of "file_find_*" into several frames is "unsafe"
+* -> The safe mode searches all names within folder at once, which can cause stutter with wide folders.
 * 
 * "directory_exists" -function is SLOW
 * -> This implementation tries to avoid using it by iterating twice.
@@ -18,39 +20,39 @@
 * 
 * @context FolderCrawler
 */ 
-function __FolderCrawler__CrawlUnsafeV2()
+function __FolderCrawler_Iterator__Loop()
 {
   // Get the time budget.
   var _speed = game_get_speed(gamespeed_microseconds);
-  var _budget = self.budget * _speed;
+  var _budget = (self.budget * _speed);
   var _timeTarget = (get_timer() + _budget);
   
   
   // Iterate until frame-budget has been exhausted.
   while(get_timer() < _timeTarget)
   {
-    // Add items until finished or time is up.
+    // Add items until no new item names, or time is up.
     while(self.nextName != "")
     {
       if (get_timer() >= _timeTarget) return;
       self.AddItem(self.nextName);
-      self.nextName = file_find_next();
+      self.FindNext();
     }
     
     
-    // No more items.
-    file_find_close();
+    // Close current folder iteration.
+    self.FindClose();
     
     
     // Check whether was iterating through files.
     // -> If yes, then swap to iterating through the folders.
     // -> Previously iterated through only the files.
     // -> Now iterating through both (in GM can't iterate only folders).
-    if (self.AddItem == __FolderCrawler__Crawl_File)
+    if (self.AddItem == __FolderCrawler_Iterator__File)
     {
-      self.AddItem = __FolderCrawler__Crawl_Folder;
-      self.nextName = file_find_first(
-        (self.folderCurrent.path + self.defaultMask), 
+      self.AddItem = __FolderCrawler_Iterator__Folder;
+      self.FindBegin(
+        (self.folderCurrent.path + "\\*"), 
         (self.attributes | fa_directory)
       );
       continue;
@@ -65,7 +67,7 @@ function __FolderCrawler__CrawlUnsafeV2()
     // Check if no more items left -> end the loop.
     if (self.folderCurrent == undefined)
     {
-      self.Finish();
+      self.handle.Finish();
       return;
     }
     
@@ -76,9 +78,9 @@ function __FolderCrawler__CrawlUnsafeV2()
     
     // Start iterating through the files.
     // -> This excludes the folders.
-    ds_map_clear(self.currFiles);
-    self.AddItem = __FolderCrawler__Crawl_File;
-    self.nextName = file_find_first(
+    ds_map_clear(self.fileMapping);
+    self.AddItem = __FolderCrawler_Iterator__File;
+    self.FindBegin(
       (self.folderCurrent.path + self.mask), 
       (self.attributes & (~fa_directory))
     );

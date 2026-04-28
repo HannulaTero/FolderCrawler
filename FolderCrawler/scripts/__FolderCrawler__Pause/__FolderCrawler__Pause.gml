@@ -12,5 +12,5 @@ function __FolderCrawler__Pause()
     return;
   }
     
-  time_source_pause(self.timeSource);
+  time_source_pause(self.iterator.timeSource);
 }

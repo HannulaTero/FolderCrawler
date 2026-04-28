@@ -13,6 +13,6 @@ function __FolderCrawler__IsPaused()
     return false;
   }
   
-  var _state = time_source_get_state(self.timeSource);
+  var _state = time_source_get_state(self.iterator.timeSource);
   return (_state == time_source_state_paused);
 }

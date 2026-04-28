@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__FolderCrawler_Dispatcher__Context",
   "parent":{
-    "name":"FolderCrawler Dispatcher",
-    "path":"folders/FolderCrawler/FolderCrawler Dispatcher.yy",
+    "name":"Dispatcher",
+    "path":"folders/FolderCrawler/Private/Dispatcher.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

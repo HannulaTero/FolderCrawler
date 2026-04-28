@@ -8,9 +8,9 @@
 */
 function __FolderCrawler__Stop()
 {
-  time_source_destroy(self.timeSource);
-  ds_map_destroy(self.currFiles);
-  self.timeSource = undefined;
-  self.status     = FolderCrawler.crawlStates.failure;
-  self.Callback(self, self.userContext);
+  time_source_destroy(self.iterator.timeSource);
+  ds_map_destroy(self.iterator.fileMapping);
+  self.iterator.timeSource = undefined;
+  self.iterator.status     = FolderCrawler_Status.FAILURE;
+  self.iterator.Callback(self, self.iterator.userContext);
 }

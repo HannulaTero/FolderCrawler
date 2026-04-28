@@ -8,7 +8,6 @@
 */ 
 function __FolderCrawler__DebugPath()
 {
-  return (self.folderCurrent != undefined)
-    ? self.folderCurrent.path
-    : "";
+  var _curr = self.iterator.folderCurrent;
+  return (_curr != undefined) ? _curr.path : "";
 }

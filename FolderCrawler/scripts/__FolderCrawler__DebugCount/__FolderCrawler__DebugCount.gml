@@ -8,5 +8,5 @@
 */ 
 function __FolderCrawler__DebugCount()
 {
-  return self.itemCount;
+  return self.iterator.itemCount;
 }

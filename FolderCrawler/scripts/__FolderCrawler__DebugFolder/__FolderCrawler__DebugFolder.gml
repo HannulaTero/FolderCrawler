@@ -8,5 +8,5 @@
 */ 
 function __FolderCrawler__DebugFolder()
 {
-  return self.folderCurrent;
+  return self.iterator.folderCurrent;
 }

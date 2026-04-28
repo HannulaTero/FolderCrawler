@@ -9,5 +9,5 @@
 */ 
 function __FolderCrawler__DebugNext()
 {
-  return self.nextName;
+  return self.iterator.nextName;
 }

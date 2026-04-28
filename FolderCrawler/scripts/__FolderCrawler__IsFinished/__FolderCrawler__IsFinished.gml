@@ -8,5 +8,5 @@
 */ 
 function __FolderCrawler__IsFinished()
 {
-  return (self.status != FolderCrawler.crawlStates.pending);
+  return (self.iterator.status != FolderCrawler_Status.PENDING);
 }
