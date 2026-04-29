@@ -11,7 +11,20 @@ function __FolderCrawler_Iterator(_handle, _descriptor=FolderCrawler_Descriptor(
 {
   //=============================================================
   // 
+  #region STATIC METHODS.
+  
+  
+  
+  static Finish = __FolderCrawler_Iterator__Finish;
+  
+  
+  
+  #endregion
+  // 
+  //=============================================================
+  // 
   #region METHODS.
+  
   
   
   // What action is being taken in iteration (folder or file)
@@ -50,11 +63,13 @@ function __FolderCrawler_Iterator(_handle, _descriptor=FolderCrawler_Descriptor(
   self.Callback = __FolderCrawler__DefaultCallback;
   
   
+  
   #endregion
   // 
   //=============================================================
   // 
   #region VARIABLES.
+  
   
   
   // The FolderCrawler handle which owns the iterator.
@@ -94,7 +109,15 @@ function __FolderCrawler_Iterator(_handle, _descriptor=FolderCrawler_Descriptor(
   
   
   // How many items have been found.
-  self.itemCount = 0;
+  self.debugItemCount = 0;
+  
+  
+  // The reference time when crawling started.
+  self.debugTimeBegin = get_timer();
+  
+  
+  // How much time crawling has taken.
+  self.debugTimeTaken = 0;
   
   
   // Context, which is passed to the actions.
@@ -119,6 +142,7 @@ function __FolderCrawler_Iterator(_handle, _descriptor=FolderCrawler_Descriptor(
   
   // Define the variables.
   __FolderCrawler_Iterator__Config(_descriptor);
+  
   
   
   #endregion

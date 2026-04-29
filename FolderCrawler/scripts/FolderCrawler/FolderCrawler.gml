@@ -19,10 +19,10 @@ function FolderCrawler(_path, _descriptor=FolderCrawler_Descriptor()) constructo
   static DebugFolder  = __FolderCrawler__DebugFolder;
   static DebugNext    = __FolderCrawler__DebugNext;
   static DebugPath    = __FolderCrawler__DebugPath;
+  static DebugTime    = __FolderCrawler__DebugTime;
   
   
   // The usual methods.
-  static Finish         = __FolderCrawler__Finish;
   static GetRoot        = __FolderCrawler__GetRoot;
   static GetStatus      = __FolderCrawler__GetStatus;
   static GetStatusName  = __FolderCrawler__GetStatusName;

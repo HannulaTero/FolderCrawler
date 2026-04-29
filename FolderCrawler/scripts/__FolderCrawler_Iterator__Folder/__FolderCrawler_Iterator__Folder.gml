@@ -19,7 +19,7 @@ function __FolderCrawler_Iterator__Folder(_name)
   var _path = (self.folderCurrent.path + "\\" + _name);
   var _folder = new FolderCrawler_Folder(self.folderCurrent, _name, _path);
   self.ActionFolder(_folder, self.userContext);
-  self.itemCount += 1;
+  self.debugItemCount += 1;
   
   // Add into stack of upcoming iteration targets.
   array_push(self.folderStack, _folder);

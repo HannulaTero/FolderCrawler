@@ -14,6 +14,7 @@ if (self.current == undefined)
 
 
 // Print information about current folder.
+self.printer.SetPos(768, 64);
 self.printer.Print($"\n")
   .Print($"Current folder : {self.current.path}")
   .Print($" -> Folder count : {array_length(self.current.folders)}")
@@ -45,7 +46,7 @@ for(var i = _lower; i < _upper; i++)
   // Whether has a cursor.
   var _cursor = (_item == _items[_index])
     ? ">> " 
-    : ""
+    : "   "
   
   // Tell whether file or folder.
   var _text = (_item.type == "folder")

@@ -14,7 +14,7 @@ function __FolderCrawler_Iterator__File(_name)
   var _path = (self.folderCurrent.path + "\\" + _name);
   var _file = new FolderCrawler_File(self.folderCurrent, _name, _path);
   self.ActionFile(_file, self.userContext);
-  self.itemCount += 1;
+  self.debugItemCount += 1;
   
   array_push(self.folderCurrent.files, _file);
   self.fileMapping[? _name] = _file;

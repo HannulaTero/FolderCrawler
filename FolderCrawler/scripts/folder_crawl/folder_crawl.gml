@@ -10,11 +10,11 @@
 * -> Crawler has time-budget how much it can try iterate.
 * -> By default budget is high: 0.90 -> 90% of the frame time.
 * 
-* Note, because of file_find_* has global state, 
-* by default crawler will find all possible names within folder at once without stopping.
+* Note, by default crawler will find all possible names within folder at once without stopping,
+* because of file_find_* has global state.
 * -> This is done to avoid problems, if file_find_* function are used elsewhere.
 * -> If single folder has lot of files/folders, this can cause stutter.
-* You may toggle "unsafe : true" to avoid this.
+* -> You may toggle "unsafe : true" to avoid this.
 * -> It will assume nothing elsewhere touches file_find_* while crawling.
 *
 * @param {String} _path

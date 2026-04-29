@@ -18,14 +18,16 @@
 * -> First, find only target files. (add to map)
 * -> Second, find these files + folders. (check whether on map)
 * 
-* @context FolderCrawler
+* @context __FolderCrawler_Iterator
 */ 
 function __FolderCrawler_Iterator__Loop()
 {
   // Get the time budget.
-  var _speed = game_get_speed(gamespeed_microseconds);
-  var _budget = (self.budget * _speed);
-  var _timeTarget = (get_timer() + _budget);
+  var _timeCurrent  = get_timer();
+  var _timeSpeed    = game_get_speed(gamespeed_microseconds);
+  var _timeBudget   = (self.budget * _timeSpeed);
+  var _timeTarget   = (_timeCurrent + _timeBudget);
+  self.debugTimeTaken = (_timeCurrent - self.debugTimeBegin);
   
   
   // Iterate until frame-budget has been exhausted.
@@ -67,7 +69,7 @@ function __FolderCrawler_Iterator__Loop()
     // Check if no more items left -> end the loop.
     if (self.folderCurrent == undefined)
     {
-      self.handle.Finish();
+      self.Finish();
       return;
     }
     

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__FolderCrawler__Finish",
+  "%Name":"__FolderCrawler__DebugTime",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__FolderCrawler__Finish",
+  "name":"__FolderCrawler__DebugTime",
   "parent":{
     "name":"Methods",
     "path":"folders/FolderCrawler/Methods.yy",
