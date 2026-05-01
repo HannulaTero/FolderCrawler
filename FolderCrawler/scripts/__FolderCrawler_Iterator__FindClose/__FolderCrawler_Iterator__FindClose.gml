@@ -1,7 +1,7 @@
 
 
 /**
-* 
+* Clears the pending names array.
 * 
 * @context __FolderCrawler_Iterator
 */ 

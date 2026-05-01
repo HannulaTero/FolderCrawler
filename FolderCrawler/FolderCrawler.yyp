@@ -34,7 +34,7 @@
   "resources":[
     {"id":{"name":"font_FolderCrawler","path":"fonts/font_FolderCrawler/font_FolderCrawler.yy",},},
     {"id":{"name":"FolderCrawler_license","path":"notes/FolderCrawler_license/FolderCrawler_license.yy",},},
-    {"id":{"name":"FolderCrawler_note","path":"notes/FolderCrawler_note/FolderCrawler_note.yy",},},
+    {"id":{"name":"FolderCrawler_readme","path":"notes/FolderCrawler_readme/FolderCrawler_readme.yy",},},
     {"id":{"name":"object_FolderCrawler_Example_00","path":"objects/object_FolderCrawler_Example_00/object_FolderCrawler_Example_00.yy",},},
     {"id":{"name":"object_FolderCrawler_Example_01","path":"objects/object_FolderCrawler_Example_01/object_FolderCrawler_Example_01.yy",},},
     {"id":{"name":"object_FolderCrawler_Example_02","path":"objects/object_FolderCrawler_Example_02/object_FolderCrawler_Example_02.yy",},},

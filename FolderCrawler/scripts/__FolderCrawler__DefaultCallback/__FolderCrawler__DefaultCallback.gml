@@ -1,7 +1,7 @@
 
 
 /**
-* Function signature for the callback.
+* Function signature for the callback, whenever crawling has finished
 * 
 * @param {Struct.FolderCrawler} _crawler  Crawler handle.
 * @param {Any}                  _context  User-provided context.

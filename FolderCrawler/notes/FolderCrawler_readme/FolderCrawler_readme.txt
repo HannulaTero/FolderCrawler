@@ -1,9 +1,9 @@
 ===============================================================
 
-  ___    _    _          ___                 _         
- | __|__| |__| |___ _ _ / __|_ _ __ ___ __ _| |___ _ _ 
+  ___    _    _          ___                 _
+ | __|__| |__| |___ _ _ / __|_ _ __ ___ __ _| |___ _ _
  | _/ _ \ / _` / -_) '_| (__| '_/ _` \ V  V / / -_) '_|
- |_|\___/_\__,_\___|_|  \___|_| \__,_|\_/\_/|_\___|_|  
+ |_|\___/_\__,_\___|_|  \___|_| \__,_|\_/\_/|_\___|_|
   v1.1.0 by Tero Hannula
 
 ===============================================================
@@ -23,17 +23,14 @@ but also makes frame-budgeting simpler.
 ===============================================================
 
   
-Note that sandboxing can affect where can be crawled, 
-so check the project sandbox settings.
+Note that sandboxing can affect where can be crawled, so check the project sandbox settings.
 Also note platform related restrictions (HTML5 and GX for example).
   
-As file_find_* has global state, asset avoids spreading its use 
-over several frame, therefore it collects all names within 
-folder at once, and then creates structure and pushes next 
-folders for dispatching. This does mean there is possiblity that
-folder just contains so many files/folders, that game still 
-freezes. This could be avoided, if also use of file_find_* is 
-spread over several frames.
+As file_find_* has global state, asset avoids spreading its use over several frame, 
+therefore it collects all names within folder at once, 
+and then creates structure and pushes next folders for dispatching. 
+This does mean there is possiblity that folder just contains so many files/folders, that game still freezes. 
+This could be avoided, if also use of file_find_* is spread over several frames.
 
 
 ===============================================================
@@ -61,9 +58,9 @@ By default, the resulting structure is build from following structs :
 ===============================================================
   
   
-  The acceptable parameters can be seen from Descriptor-signature.
-  Descriptor accepts actions and callbacks, the mehtod signatures 
-  can also be found in signature-folder.
+The acceptable parameters can be seen from Descriptor-signature.
+Descriptor accepts user-defined actions and callback as methods.
+-> the method signatures can also be found in signature-folder.
   
 
 ===============================================================

@@ -3,12 +3,12 @@
 /**
 * Crawls through files and folders within given path.
 * 
-* Dispatches crawlers one at the time, so there won't be many crawlers
-* simultanously active. Rest are kept in pending-queue, waiting for their turn.
+* This will handle keeping only single crawler active, so there won't be many crawlers simultanously active. 
+* The rest are kept in pending-queue, waiting for their turn.
 * 
 * This is asynchronous / non-blocking, so crawling can be split into several frames.
-* -> Crawler has time-budget how much it can try iterate.
-* -> By default budget is high: 0.90 -> 90% of the frame time.
+* -> Crawler has time-budget how much it can try iterate, for example 0.75 -> 75% of the frame time.
+* -> By default budget is high, assumes you are not really doing other stuff.
 * 
 * Note, by default crawler will find all possible names within folder at once without stopping,
 * because of file_find_* has global state.

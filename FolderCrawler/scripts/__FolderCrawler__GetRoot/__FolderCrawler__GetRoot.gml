@@ -9,4 +9,5 @@
 function __FolderCrawler__GetRoot()
 {
   return self.root;
-};
+}
+

@@ -3,7 +3,6 @@
 /**
 * The descriptor signature for the crawler.
 * 
-*
 * This defines possible arguments for the crawler,
 * and their expected types as default values.
 */ 
@@ -14,8 +13,8 @@ function FolderCrawler_Descriptor()
     unsafe      : false,
     paused      : false,
     context     : undefined,
-    budget      : 0.90,
-    attributes  : (fa_none | fa_directory),
+    budget      : 0.925,
+    attributes  : fa_none,
     init        : __FolderCrawler__DefaultActionInit,
     open        : __FolderCrawler__DefaultActionOpen,
     file        : __FolderCrawler__DefaultActionFile,

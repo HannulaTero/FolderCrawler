@@ -15,13 +15,8 @@ FolderCrawler_GetString(
     }
     
     
-    // Preparations.
-    self.timeBegin = get_timer();
-    self.status = "waiting...";
-    
-    
     // Dispatch the crawl.
-    folder_crawl(_result, {
+    self.handle = folder_crawl(_result, {
       unsafe : true,
       context : self.items,
       file : function(_file, _context)
@@ -34,11 +29,7 @@ FolderCrawler_GetString(
       },
       callback : function(_crawler, _context)
       {
-        self.timeTaken  = (get_timer() - self.timeBegin);
-        self.foundCount = _crawler.DebugCount();
-        self.status     = _crawler.GetStatusName();
         self.structure  = _crawler.GetRoot();
-        self.json       = json_stringify(self.structure, true);
       }
     });
   }

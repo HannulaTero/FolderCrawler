@@ -19,7 +19,8 @@ self.printer.Print($"\n")
   .Print($"Current folder : {self.current.path}")
   .Print($" -> Folder count : {array_length(self.current.folders)}")
   .Print($" -> File count   : {array_length(self.current.files)}")
-  .Print($"\n");
+  .Print($"\n")
+  .Print($"FOLDERS =========");
 
 
 // Draw the folders.
@@ -28,7 +29,7 @@ var _index = array_last(self.index);
 var _items = self.current.folders;
 var _count = array_length(_items);
 var _lower = max(0, _index - 4);
-var _upper = min(_count, _lower + 16);
+var _upper = min(_count, _lower + 8);
 
 
 // Indicate there are more up, non-visible.
@@ -48,12 +49,7 @@ for(var i = _lower; i < _upper; i++)
     ? ">> " 
     : "   "
   
-  // Tell whether file or folder.
-  var _text = (_item.type == "folder")
-    ? $"{_cursor} / {_item.name}"
-    : $"{_cursor} - {_item.name}";
-  
-  self.printer.Print(_text);
+  self.printer.Print($"{_cursor} / {_item.name}");
 }
 
 
@@ -65,3 +61,18 @@ if (_upper != _count)
 
 
 
+// Draw the files.
+self.printer.SetPos(768, 460);
+self.printer.Print("FILES =========");
+_items = self.current.files;
+_count = array_length(_items);
+_upper = min(8, _count);
+for(var i = 0; i < _upper; i++)
+{
+  self.printer.Print($" - {_items[i].name}");
+}
+
+if (_count != _upper)
+{
+  self.printer.Print("...");
+}

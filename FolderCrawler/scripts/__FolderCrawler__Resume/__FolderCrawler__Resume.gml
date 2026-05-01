@@ -13,4 +13,4 @@ function __FolderCrawler__Resume()
   }
   
   time_source_resume(self.iterator.timeSource);
-};
+}

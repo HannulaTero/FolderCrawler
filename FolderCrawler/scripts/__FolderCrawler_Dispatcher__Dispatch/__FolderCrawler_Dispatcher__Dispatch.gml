@@ -2,6 +2,7 @@
 
 /**
 * For dispatching crawlers in ordered manner.
+* -> This shouldn't be used by the user!
 */ 
 function __FolderCrawler_Dispatcher__Dispatch()
 {

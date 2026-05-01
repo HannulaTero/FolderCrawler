@@ -1,8 +1,8 @@
 
 
 /**
-* Returns next name, which will be crawled in given path.
-* -> This only appears whenever folder-lookup is split.
+* Returns next name, which will be checked next in current given path.
+* -> In practice this only appears whenever using unsafe crawling.
 * 
 * @context FolderCrawler
 * @returns {String}

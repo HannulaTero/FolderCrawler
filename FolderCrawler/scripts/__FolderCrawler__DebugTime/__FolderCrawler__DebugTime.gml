@@ -2,7 +2,7 @@
 
 /**
 * Returns how many much time crawling has taken.
-* Time updates up until it has finished.
+* Time updates up until crawling has finished.
 * Returns in microseconds.
 * 
 * @context FolderCrawler

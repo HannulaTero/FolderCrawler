@@ -1,11 +1,12 @@
 {
   "$GMNotes":"v1",
-  "%Name":"FolderCrawler_note",
-  "name":"FolderCrawler_note",
+  "%Name":"FolderCrawler_readme",
+  "name":"FolderCrawler_readme",
   "parent":{
     "name":"FolderCrawler",
     "path":"folders/FolderCrawler.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",
+  "shouldOpenOnLoad":true,
 }

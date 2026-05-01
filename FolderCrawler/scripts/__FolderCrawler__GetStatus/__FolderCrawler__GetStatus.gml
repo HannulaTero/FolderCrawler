@@ -9,4 +9,5 @@
 function __FolderCrawler__GetStatus()
 {
   return self.iterator.status;
-};
+}
+

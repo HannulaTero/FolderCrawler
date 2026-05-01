@@ -2,6 +2,7 @@
 
 /**
 * Returns the global context used internally for dispatcher.
+* -> This shouldn't be used by the user!
 */ 
 function __FolderCrawler_Dispatcher__Context()
 {

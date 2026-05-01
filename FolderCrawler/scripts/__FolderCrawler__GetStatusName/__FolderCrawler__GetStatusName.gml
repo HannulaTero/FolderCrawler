@@ -15,4 +15,4 @@ function __FolderCrawler__GetStatusName()
     case FolderCrawler_Status.FAILURE : return "failure";
     default : return "error";
   }
-};
+}

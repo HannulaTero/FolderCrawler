@@ -10,12 +10,6 @@ if (self.handle == undefined)
 }
 
 
-// Update the status.
-self.status     = self.handle.GetStatusName();
-self.foundCount = self.handle.DebugCount();
-self.timeTaken  = self.handle.DebugTime();
-
-
 // Get root and print out the JSON.
 // -> Root always exists, but the subfolders might not yet.
 var _root = self.handle.GetRoot();

@@ -1,7 +1,7 @@
 
 
 /**
-* Function signature for the action to do with the folder.
+* Function signature for the action to do with the folder, whenever it is created.
 * -> Note that the folder will be target during later stage of iterations.
 * -> This means the file / folder -contents may be updated.
 * 

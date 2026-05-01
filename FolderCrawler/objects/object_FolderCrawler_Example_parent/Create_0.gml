@@ -9,6 +9,10 @@ self.label = "Example [X]"
 self.printer = new FolderCrawler_Printer();
 
 
+// Crawler handle.
+self.handle = undefined;
+
+
 // When crawling started.
 self.timeBegin = get_timer();
 
@@ -31,3 +35,5 @@ self.structure = undefined;
 
 // JSON version of the structure.
 self.json = "";
+
+
