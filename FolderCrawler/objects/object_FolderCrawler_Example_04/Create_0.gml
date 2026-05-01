@@ -1,24 +1,10 @@
 /// @desc INITIALIZATION.
 
-
-//
-self.timeBegin = get_timer();
-
-
-//
-self.timeTaken = 0;
-
-
-//
-self.foundCount = 0;
-
+event_inherited();
 
 // 
-self.status = "nothing";
+self.label = "Example [4] utilizes parameters, finds all png's"
 
-
-//
-self.structure = undefined;
 
 
 // This contains results.

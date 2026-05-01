@@ -1,50 +1,41 @@
 /// @desc DRAW 
 
 
-// Draw something indicate game has not frozen.
-var _x = 128
-var _y = 128;
-var _i = 0;
-var _h = 16;
-
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_text(_x, _y + _h * _i++, $"EXAMPLE 03.");
-draw_text(_x, _y + _h * _i++, $"---");
-draw_text(_x, _y + _h * _i++, $"Press [ENTER] to give a path to crawl.");
-draw_text(_x, _y + _h * _i++, $"Press [ARROWS] to walk found structure.");
-draw_text(_x, _y + _h * _i++, $"---");
-draw_text(_x, _y + _h * _i++, $"Time taken  : {(self.timeTaken / 1000)} ms");
-draw_text(_x, _y + _h * _i++, $"Found count : {self.foundCount}");
-draw_text(_x, _y + _h * _i++, $"Status      : {self.status}");
-draw_text(_x, _y + _h * _i++, $"---");
+// Draw the information.
+event_inherited();
 
 
-// Don't try any items, if structure doesn't exist yet.
+
+// Don't draw any items, if structure doesn't exist yet.
 if (self.current == undefined)
 {
   exit;
 }
 
-_i += 2;
-draw_text(_x, _y + _h * _i++, $"Current : {self.current.path}");
-_i += 2;
-_x += 32;
+
+// Print information about current folder.
+self.printer.SetPos(768, 64);
+self.printer.Print($"\n")
+  .Print($"Current folder : {self.current.path}")
+  .Print($" -> Folder count : {array_length(self.current.folders)}")
+  .Print($" -> File count   : {array_length(self.current.files)}")
+  .Print($"\n")
+  .Print($"FOLDERS =========");
 
 
-// Draw the items.
-// Bit of hacky way for now.
+// Draw the folders.
+// -> Only draw some of the folders, not all.
 var _index = array_last(self.index);
-var _items = self.items;
+var _items = self.current.folders;
 var _count = array_length(_items);
 var _lower = max(0, _index - 4);
-var _upper = min(_count, _lower + 16);
+var _upper = min(_count, _lower + 8);
 
 
 // Indicate there are more up, non-visible.
 if (_lower != 0)
 {
-  draw_text(_x, _y + _h * _i++, "...");
+  self.printer.Print("...");
 }
 
 
@@ -53,25 +44,35 @@ for(var i = _lower; i < _upper; i++)
 {
   var _item = _items[i];
   
-  // Draw cursor.
-  if (_item == _items[_index])
-  {
-    draw_text(_x - 32, _y + _h * _i, ">>");
-  }
+  // Whether has a cursor.
+  var _cursor = (_item == _items[_index])
+    ? ">> " 
+    : "   "
   
-  // Tell whether file or folder.
-  var _text = (_item.type == "folder")
-    ? $"/ {_item.name}"
-    : $"- {_item.name}";
-  draw_text(_x, _y + _h * _i++, _text);
+  self.printer.Print($"{_cursor} / {_item.name}");
 }
 
 
 // Indicate there are more down, non-visible.
 if (_upper != _count)
 {
-  draw_text(_x, _y + _h * _i++, "...");
+  self.printer.Print("...");
 }
 
 
 
+// Draw the files.
+self.printer.SetPos(768, 460);
+self.printer.Print("FILES =========");
+_items = self.current.files;
+_count = array_length(_items);
+_upper = min(8, _count);
+for(var i = 0; i < _upper; i++)
+{
+  self.printer.Print($" - {_items[i].name}");
+}
+
+if (_count != _upper)
+{
+  self.printer.Print("...");
+}

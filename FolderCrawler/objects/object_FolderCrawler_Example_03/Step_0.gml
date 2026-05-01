@@ -2,20 +2,28 @@
 
 // Don't try, if structure doesn't exist yet.
 if (self.current == undefined)
+&& (self.structure == undefined)
 {
   exit;
 }
 
 
+// Give the structure starting position if not defined.
+if (self.current == undefined)
+{
+  self.current = self.structure;
+}
+
+
 // Update last index in the stack.
-// Easier to pop and push back.
 if (keyboard_check_pressed(vk_up) == true)
 {
+  // Easier to pop and push back.
   var _index = array_pop(self.index);
   _index -= 1;
   if (_index < 0)
   {
-    _index = array_length(self.items) - 1;
+    _index = array_length(self.current.folders) - 1;
   }
   array_push(self.index, _index);
 }
@@ -25,7 +33,7 @@ if (keyboard_check_pressed(vk_down) == true)
 {
   var _index = array_pop(self.index);
   _index += 1;
-  if (_index >= array_length(self.items))
+  if (_index >= array_length(self.current.folders))
   {
     _index = 0;
   }
@@ -40,10 +48,6 @@ if (keyboard_check_pressed(vk_left) == true)
   {
     array_pop(self.index);
     self.current = self.current.root;
-    self.items = array_concat(
-      self.current.folders,
-      self.current.files
-    );
   }
 }
 
@@ -51,17 +55,14 @@ if (keyboard_check_pressed(vk_left) == true)
 // Move inside the selected folder.
 if (keyboard_check_pressed(vk_right) == true)
 {
-  if (array_length(self.items) > 0)
+  if (array_length(self.current.folders) > 0)
   {
-    var _item = self.items[array_last(self.index)];
+    var _index = array_last(self.index);
+    var _item = self.current.folders[_index];
     if (_item.type == "folder")
     {
       array_push(self.index, 0);
       self.current = _item;
-      self.items = array_concat(
-        self.current.folders,
-        self.current.files
-      );
     }
   }
 }

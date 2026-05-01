@@ -1,6 +1,8 @@
-/// @desc REQUEST PATH.
+/// @desc REQUEST PATH & DISPATCH CRAWLER.
 
-object_FolderCrawler_Example_manager.GetString(
+
+// Ask for the path-string, async.
+FolderCrawler_GetString(
   "Give a directory", 
   working_directory,
   function(_status, _result)
@@ -13,18 +15,13 @@ object_FolderCrawler_Example_manager.GetString(
     }
     
     
-    // Preparations.
-    self.timeBegin = get_timer();
-    self.status = "waiting...";
-    
-    
     // Dispatch the crawl.
-    folder_crawl(_result, function(_status, _result, _crawler)
-    {
-      self.timeTaken  = (get_timer() - self.timeBegin);
-      self.foundCount = _crawler.itemCount;
-      self.structure  = _result;
-      self.status     = $"finished! {_status}";
+    self.handle = folder_crawl(_result, {
+      callback : function(_crawler, _context)
+      {
+        // Could do other stuff too.
+        self.structure = _crawler.GetRoot();
+      }
     });
   }
 );

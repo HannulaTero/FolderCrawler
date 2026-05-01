@@ -2,30 +2,18 @@
 
 if (keyboard_check_pressed(vk_anykey) == true)
 {
-  switch(keyboard_key)
+  // Parse the input key.
+  var _char = keyboard_lastchar;
+  var _byte = ord(_char);
+  var _index = (_byte - ord("0"));
+  keyboard_lastchar = "";
+  
+  
+  // If valid index, then change example.
+  if (_index >= 0)
+  && (_index < array_length(self.examples))
   {
-    case ord("1"): {
-      instance_destroy(object_FolderCrawler_Example_parent);
-      instance_create_depth(0, 0, 0, object_FolderCrawler_Example_01);
-      break;
-    }
-    
-    case ord("2"): {
-      instance_destroy(object_FolderCrawler_Example_parent);
-      instance_create_depth(0, 0, 0, object_FolderCrawler_Example_02);
-      break;
-    }
-    
-    case ord("3"): {
-      instance_destroy(object_FolderCrawler_Example_parent);
-      instance_create_depth(0, 0, 0, object_FolderCrawler_Example_03);
-      break;
-    }
-    
-    case ord("4"): {
-      instance_destroy(object_FolderCrawler_Example_parent);
-      instance_create_depth(0, 0, 0, object_FolderCrawler_Example_04);
-      break;
-    }
+    instance_destroy(object_FolderCrawler_Example_parent);
+    instance_create_depth(0, 0, 0, self.examples[_index]);
   }
 }

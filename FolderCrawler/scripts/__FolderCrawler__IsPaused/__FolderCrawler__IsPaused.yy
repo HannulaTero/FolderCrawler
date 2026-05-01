@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__FolderCrawler__IsPaused",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__FolderCrawler__IsPaused",
+  "parent":{
+    "name":"Methods",
+    "path":"folders/FolderCrawler/Methods.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

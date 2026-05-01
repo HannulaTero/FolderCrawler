@@ -1,19 +1,17 @@
-/// @desc DRAW 
+// Inherit the parent event
+event_inherited();
 
 
-// Draw something indicate game has not frozen.
-var _x = 128
-var _y = 128;
-var _i = 0;
-var _h = 16;
+// Don't draw any items, if structure doesn't exist yet.
+if (self.structure == undefined)
+{
+  exit;
+}
 
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_text(_x, _y + _h * _i++, $"EXAMPLE 02.");
-draw_text(_x, _y + _h * _i++, $"---");
-draw_text(_x, _y + _h * _i++, $"Press [ENTER] to give a path to crawl.");
-draw_text(_x, _y + _h * _i++, $"---");
-draw_text(_x, _y + _h * _i++, $"Time taken  : {(self.timeTaken / 1000)} ms");
-draw_text(_x, _y + _h * _i++, $"Found count : {self.foundCount}");
-draw_text(_x, _y + _h * _i++, $"Status      : {self.status}");
 
+// Print information about current folder.
+self.printer.Print($"\n")
+  .Print($"Root folder : {self.structure.path}")
+  .Print($" -> Folder count : {array_length(self.structure.folders)}")
+  .Print($" -> File count   : {array_length(self.structure.files)}")
+  .Print($"\n");

@@ -1,6 +1,8 @@
-/// @desc REQUEST PATH.
+/// @desc REQUEST PATH & DISPATCH CRAWLER.
 
-object_FolderCrawler_Example_manager.GetString(
+
+// Ask for the path-string, async.
+FolderCrawler_GetString(
   "Give a directory", 
   working_directory,
   function(_status, _result)
@@ -13,39 +15,22 @@ object_FolderCrawler_Example_manager.GetString(
     }
     
     
-    // Preparations before dispatch.
-    self.timeBegin  = get_timer();
-    self.status     = $"waiting...";
-    array_resize(self.items, 0);
-    
-    
     // Dispatch the crawl.
-    folder_crawl(_result, function(_status, _result, _crawler)
-    {
-      self.timeTaken  = (get_timer() - self.timeBegin);
-      self.foundCount = _crawler.itemCount;
-      self.structure  = _result;
-      self.status     = $"finished! {_status}";
-    }, {
+    self.handle = folder_crawl(_result, {
       unsafe : true,
-      action : method(self, function(_item)
+      context : self.items,
+      file : function(_file, _context)
       {
-        // Whether folder or file.
-        if (_item.type != "file")
+        var _ext = filename_ext(_file.name);
+        if (_ext == ".png")
         {
-          return;
+          array_push(_context, _file);
         }
-        
-        // Check for the extension.
-        var _ext = filename_ext(_item.name);
-        if (_ext != ".png")
-        {
-          return;
-        }
-        
-        // Push into items.
-        array_push(self.items, _item);
-      })
+      },
+      callback : function(_crawler, _context)
+      {
+        self.structure  = _crawler.GetRoot();
+      }
     });
   }
 );

@@ -1,9 +1,11 @@
-/// @desc DRAW.
+/// @desc DRAW GENERAL INFO.
+
+self.timer += 2;
 
 // Right corner.
 var _x = room_width - 128;
 var _y = room_height - 128;
-var _dir = current_time / 10;
+var _dir = self.timer;
 
 
 // Draw information.
