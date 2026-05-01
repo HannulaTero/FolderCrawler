@@ -1,73 +1,83 @@
+```gml
+===============================================================
+  ___    _    _          ___                 _
+ | __|__| |__| |___ _ _ / __|_ _ __ ___ __ _| |___ _ _
+ | _/ _ \ / _` / -_) '_| (__| '_/ _` \ V  V / / -_) '_|
+ |_|\___/_\__,_\___|_|  \___|_| \__,_|\_/\_/|_\___|_|
+  v1.1.0 by Tero Hannula
+===============================================================
+```
+
 # FolderCrawler
 ## [GameMaker] Asynchronously finding all folder and files within given path.
 
 [On Itchio](https://terohannula.itch.io/foldercrawler)
 
-This asset can be used to crawl out larger folder/file-structures without making the game to freeze up. 
+===============================================================
+
+This asset can be used to crawl out larger folder/file-structures without making the game to freeze up by splitting crawling into several frames.
+Crawling will result nested structure containing structs, which represent files and folders.
+
+
+Use "folder_crawl(path, params)" to dispatch crawler(s). This will queue up the requests, so only single of them is active at given time.
+This is done to avoid concurrent uses of file_find_* (which is important with "unsafe" crawl) but also makes frame-budgeting simpler.
+
+===============================================================
 
 Note that sandboxing can affect where can be crawled, so check the project sandbox settings.
+Also note platform related restrictions (HTML5 and GX for example).
 
-As file_find_* has global state, asset avoids spreading its use over several frame, therefore it collects all names within folder at once, and then creates structure and pushes next folders for dispatching. This does mean there is possiblity that folder just contains so many files/folders, that game still freezes. This could be avoided, if also use of file_find_* is spread over several frames. This can be done by using "unsafe" mode, then crawler trusts user to not touch file_find_* functions while it is doing its stuff.
+As file_find_* has global state, asset avoids spreading its use over several frame, therefore it collects all names within folder at once, and then creates structure and pushes next folders for dispatching.
+This does mean there is possibility that folder just contains so many files/folders, that game still freezes.
+This could be avoided, if also use of file_find_* is spread over several frames.
 
-folder_crawl queues up the requests, so only one crawler is active at given time. Only accounts crawlers dispatched with it. You can use either use folder_crawl, or FolderCrawler-construct directly.
+===============================================================
 
-The result is structure made out of Folder and File -constructs, Folder containing arrays for Folder and File contained within. 
+The result is structure made out of Folder and File -constructs, Folder containing arrays for Folder and File contained within.
+
+===============================================================
 
 ## Example of uses:
 
 Simple example:
 ```gml
-folder_crawl("C:\\Users\\user\\files\\github\\FolderCrawler", function(_status, _result)
-{
-  // Print prettified JSON version of results:
-  show_debug_message(json_stringify(_result, true));
-}); 
+// Dispatch crawler
+self.handle = folder_crawl("C:\\Users\\user\\files\\github\\FolderCrawler");
 
+// Get the root folder.
+if (self.handle.IsFinished() == true)
+{
+  var _root = self.handle.GetRoot();
+  show_debug_message(json_stringify(_root, true));
+}
+```
+
+Alternatively do the callback.
+```gml
+folder_crawl("C:\\Users\\user\\files\\github\\FolderCrawler", {
+  callback : function(_crawler, _context)
+  {
+    var _root = _crawler.GetRoot();
+    show_debug_message(json_stringify(, true));
+  }
+});
 ```
 
 There are few convenience methods too, and crawler accepts optional parameters as struct.
 ```gml
-// Preprations
-self.path = "C:\\Users\\user\\files\\github";
-self.result = undefined;
-self.timeStart = get_timer();
-
-// Dispatching a crawler
-self.handle = folder_crawl(self.path, function(_status, _result, _crawler)
 {
-  show_debug_message($"finished with status : {_status}");
-  show_debug_message($"found : {_crawler.foundCount} items");
-  show_debug_message($"time taken : {(self.timeStart - get_timer()) / 1000} ms");
-  self.result = _result;
-}, {
-  budget : 0.5, // Half of the frame-time is allocated for crawl.
-}); 
-
-// Using methods.
-self.handle.Pause();
-self.handle.Resume();
-
-if (self.handle.IsFinished() == false)
-{
-  show_debug_message("Still waiting.");
+    mask        : "*",
+    unsafe      : false,
+    paused      : false,
+    context     : undefined,
+    budget      : 0.925,
+    attributes  : fa_none,
+    init        : function(_root, _context) { },
+    open        : function(_folder, _context) { },
+    file        : function(_file, _context) { },
+    folder      : function(_folder, _context) { },
+    callback    : function(_crawler, _context) { },
 }
-```
-You may also create crawler directly, same pattern as folder_crawl. The convenience function just helps queueing several requests.
-```gml
-self.handle = new FolderCrawler(_path, function(_status, _result, _crawler)
-{
-  // Do stuff here.
-}); 
-```
-
-
-Optional parameters are:
-```
-budget      : Real                    --- Relative part of the frame, such as 0.5
-attributes  : Constant.FileAttribute  --- What file-types are being searched.
-paused      : Bool                    --- Whether crawler starts in paused state.
-unsafe      : Bool                    --- Whether crawler can split file_find_* function uses to multiple frames.
-action      : Function                --- What action does while crawling.
 ```
 
 The resulting structure is build from following structs :
