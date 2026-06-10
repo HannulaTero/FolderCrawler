@@ -1,12 +1,15 @@
 
 
 /**
-* Returns how many items have been crawled through.
+* Returns how many files and folders have been crawled through.
 * 
 * @context FolderCrawler
 * @returns {Real}
 */ 
 function __FolderCrawler__DebugCount()
 {
-  return self.iterator.debugItemCount;
+  return (
+    + self.iterator.debugCountFiles
+    + self.iterator.debugCountFolders
+  )
 }

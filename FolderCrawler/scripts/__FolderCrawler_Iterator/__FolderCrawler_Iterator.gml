@@ -108,8 +108,12 @@ function __FolderCrawler_Iterator(_handle, _descriptor=FolderCrawler_Descriptor(
   self.fileMapping = ds_map_create();
   
   
-  // How many items have been found.
-  self.debugItemCount = 0;
+  // How many folders have been found.
+  self.debugCountFolders = 0;
+  
+  
+  // How many files have been found.
+  self.debugCountFiles = 0;
   
   
   // The reference time when crawling started.

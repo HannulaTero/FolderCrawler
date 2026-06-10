@@ -17,8 +17,8 @@ if (self.current == undefined)
 self.printer.SetPos(768, 64);
 self.printer.Print($"\n")
   .Print($"Current folder : {self.current.path}")
-  .Print($" -> Folder count : {array_length(self.current.folders)}")
-  .Print($" -> File count   : {array_length(self.current.files)}")
+  .Print($" -> Folder count : {struct_names_count(self.current.folders)}")
+  .Print($" -> File count   : {struct_names_count(self.current.files)}")
   .Print($"\n")
   .Print($"FOLDERS =========");
 
@@ -26,7 +26,7 @@ self.printer.Print($"\n")
 // Draw the folders.
 // -> Only draw some of the folders, not all.
 var _index = array_last(self.index);
-var _items = self.current.folders;
+var _items = struct_get_names(self.current.folders);
 var _count = array_length(_items);
 var _lower = max(0, _index - 4);
 var _upper = min(_count, _lower + 8);
@@ -42,7 +42,8 @@ if (_lower != 0)
 // Draw current items.
 for(var i = _lower; i < _upper; i++)
 {
-  var _item = _items[i];
+  var _name = _items[i];
+  var _item = self.current.folders[$ _name ];
   
   // Whether has a cursor.
   var _cursor = (_item == _items[_index])
@@ -64,12 +65,12 @@ if (_upper != _count)
 // Draw the files.
 self.printer.SetPos(768, 460);
 self.printer.Print("FILES =========");
-_items = self.current.files;
+_items = struct_get_names(self.current.files);
 _count = array_length(_items);
 _upper = min(8, _count);
 for(var i = 0; i < _upper; i++)
 {
-  self.printer.Print($" - {_items[i].name}");
+  self.printer.Print($" - {_items[i]}");
 }
 
 if (_count != _upper)

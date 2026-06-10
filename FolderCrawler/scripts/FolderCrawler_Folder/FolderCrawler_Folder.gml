@@ -27,9 +27,9 @@ function FolderCrawler_Folder(_root, _name, _path) constructor
   
   
   // Holds file-constructs.
-  self.files = [ ];
+  self.files = { };
   
   
   // Holds other folders-constructs.
-  self.folders = [ ];
+  self.folders = { };
 }

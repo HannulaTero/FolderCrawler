@@ -12,6 +12,6 @@ if (self.structure == undefined)
 // Print information about current folder.
 self.printer.Print($"\n")
   .Print($"Root folder : {self.structure.path}")
-  .Print($" -> Folder count : {array_length(self.structure.folders)}")
-  .Print($" -> File count   : {array_length(self.structure.files)}")
+  .Print($" -> Folder count : {struct_names_count(self.structure.folders)}")
+  .Print($" -> File count   : {struct_names_count(self.structure.files)}")
   .Print($"\n");

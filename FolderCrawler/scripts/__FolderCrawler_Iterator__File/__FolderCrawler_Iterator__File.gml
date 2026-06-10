@@ -14,9 +14,12 @@ function __FolderCrawler_Iterator__File(_name)
   var _path = (self.folderCurrent.path + "\\" + _name);
   var _file = new FolderCrawler_File(self.folderCurrent, _name, _path);
   self.ActionFile(_file, self.userContext);
-  self.debugItemCount += 1;
+  self.debugCountFiles += 1;
   
-  array_push(self.folderCurrent.files, _file);
+  // Add into the files of current folder.
+  self.folderCurrent.files[$ _name] = _file;
+  
+  // Inform this being a file for second pass.
   self.fileMapping[? _name] = _file;
 }
 
