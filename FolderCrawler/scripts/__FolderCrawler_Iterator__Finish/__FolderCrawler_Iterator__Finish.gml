@@ -21,3 +21,4 @@ function __FolderCrawler_Iterator__Finish(_status=FolderCrawler_Status.SUCCESS)
   // Call the final callback.
   self.Callback(self.handle, self.userContext);
 }
+

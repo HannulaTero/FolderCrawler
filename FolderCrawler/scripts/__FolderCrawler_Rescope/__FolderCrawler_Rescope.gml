@@ -10,14 +10,11 @@
 */
 function __FolderCrawler_Rescope(_other, _descriptor, _Action)
 {
-  if (is_method(_Action) == true)
+  if (is_method(_Action) == false)
+  || (method_get_self(_Action) == _descriptor)
   {
-    return (method_get_self(_Action) == _descriptor)
-      ? method(_other, _Action)
-      : _Action;
+    _Action = method(_other, _Action);
   }
-  else
-  {
-    return method(_other, _Action);
-  }
+  
+  return _Action;
 }

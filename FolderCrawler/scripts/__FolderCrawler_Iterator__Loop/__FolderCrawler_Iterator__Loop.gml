@@ -3,18 +3,18 @@
 /**
 * Crawls through folders and files, quits whenever time budget is spent.
 * Should not be called by the user. The timesource should handle this.
-* 
-* This is the main loop.
+* ---
+* This is the main crawler-loop.
+* ---
 * The file_find_* are abstracted to own functions, so the underlying implementation can be changed. 
 * -> Splitting use of "file_find_*" into several frames is "unsafe"
 * -> The safe mode searches all names within folder at once, which can cause stutter with wide folders.
-* 
+* ---
 * "directory_exists" -function is SLOW
 * -> This implementation tries to avoid using it by iterating twice.
 * -> file_find_next is also slow, but iterating twice is still faster.
-* 
-* In GM you can't iterate through only folders.
-* So this is done in two passes:
+* ---
+* In GM you can't iterate through only folders. So this is done in two passes:
 * -> First, find only target files. (add to map)
 * -> Second, find these files + folders. (check whether on map)
 * 

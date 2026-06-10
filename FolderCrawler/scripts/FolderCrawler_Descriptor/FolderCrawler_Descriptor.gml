@@ -2,7 +2,7 @@
 
 /**
 * The descriptor signature for the crawler.
-* 
+* ---
 * This defines possible arguments for the crawler,
 * and their expected types as default values.
 */ 

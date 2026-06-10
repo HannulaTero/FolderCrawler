@@ -19,3 +19,5 @@ function __FolderCrawler_Iterator__File(_name)
   array_push(self.folderCurrent.files, _file);
   self.fileMapping[? _name] = _file;
 }
+
+

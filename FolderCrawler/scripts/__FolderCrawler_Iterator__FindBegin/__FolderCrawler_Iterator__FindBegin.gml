@@ -3,7 +3,7 @@
 
 /**
 * Uses file_find_* functions safely, finds all names at once.
-* 
+* ---
 * Iterate through the current path items.
 * -> Done in single step because file-finding has global state.
 * -> After all names have been found, loop will return back.
@@ -22,6 +22,7 @@ function __FolderCrawler_Iterator__FindBegin(_mask, _attr)
     _name = file_find_next();
   }
   file_find_close();
+  
   
   // Get the first item.
   __FolderCrawler_Iterator__FindNext();

@@ -2,10 +2,9 @@
 
 /**
 * User handle for the crawler.
-* 
+* ---
 * Read the descriptor for the possible optional arguments.
 * 
-* @param {String} _path
 */ 
 function FolderCrawler(_path, _descriptor=FolderCrawler_Descriptor()) constructor
 {

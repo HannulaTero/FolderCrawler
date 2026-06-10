@@ -25,3 +25,4 @@ function __FolderCrawler_Iterator__Folder(_name)
   array_push(self.folderStack, _folder);
   array_push(self.folderCurrent.folders, _folder);
 }
+

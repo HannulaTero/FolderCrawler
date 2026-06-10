@@ -2,7 +2,7 @@
 
 /**
 * Handles crawling state and recursively iterating through folders and files.
-* 
+* ---
 * Read the descriptor for the possible arguments.
 * 
 * @param {Struct.FolderCrawler} _handle
@@ -132,7 +132,7 @@ function __FolderCrawler_Iterator(_handle, _descriptor=FolderCrawler_Descriptor(
   self.budget = 0.95;
   
   
-  // What search mask.
+  // What is the search mask.
   self.mask = "\\*";
   
   
