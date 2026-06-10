@@ -2,6 +2,7 @@
   "$GMNotes":"v1",
   "%Name":"FolderCrawler_readme",
   "name":"FolderCrawler_readme",
+  "openedOnFirstLoad":true,
   "parent":{
     "name":"FolderCrawler",
     "path":"folders/FolderCrawler.yy",
