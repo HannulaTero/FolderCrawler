@@ -4,9 +4,10 @@
 # FOLDER CRAWLER
 v1.1.1, by Tero Hannula
 
-GameMaker Version 
+Tested on GameMaker LTS2026 Version
 - IDE v2026.0.0.16
 - Runtime v2026.0.0.23
+- GMRT 0.19
 
 ---
 
