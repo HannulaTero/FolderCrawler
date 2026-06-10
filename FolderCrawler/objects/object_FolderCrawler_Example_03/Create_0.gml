@@ -1,14 +1,21 @@
 /// @desc INITIALIZATION.
 
-event_inherited();
+// Just for drawing stuff.
+self.printer = new FolderCrawler_Printer();
 
 
-// 
-self.label = "Example [3] same as before, but allows moving through folders"
+// Handle for crawler.
+self.handle = undefined;
 
 
 // Currently active folder, which is being viewed.
-self.current = undefined;
+// -> When crawling has been done, then it is updated as the root.
+// -> In the beginning it holds only the dummy folder.
+self.current = new FolderCrawler_Folder(undefined, "...", "...");
+
+
+// The names of folders and files within current folder.
+self.names = [ ];
 
 
 // Stack of indexes

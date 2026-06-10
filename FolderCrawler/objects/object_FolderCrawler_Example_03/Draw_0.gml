@@ -1,16 +1,20 @@
 /// @desc DRAW 
 
 
-// Draw the information.
-event_inherited();
+// Preparations.
+var _timeTaken = (self.handle != undefined)
+  ? self.handle.DebugTime() 
+  : 0;
 
 
+// Draw initial information
+self.printer
+  .SetPos(32, 128)
+  .Print($"Example [3] same as before, but allows moving through folders")
+  .Print($"---")
+  .Print($"Press [ENTER] to give a path and crawl.")
+  .Print($"---")
 
-// Don't draw any items, if structure doesn't exist yet.
-if (self.current == undefined)
-{
-  exit;
-}
 
 
 // Print information about current folder.
@@ -19,20 +23,20 @@ self.printer.Print($"\n")
   .Print($"Current folder : {self.current.path}")
   .Print($" -> Folder count : {struct_names_count(self.current.folders)}")
   .Print($" -> File count   : {struct_names_count(self.current.files)}")
+  .Print($" -> Time taken   : {_timeTaken / 1000} ms")
   .Print($"\n")
-  .Print($"FOLDERS =========");
+  .Print($"ITEMS =========");
 
 
-// Draw the folders.
-// -> Only draw some of the folders, not all.
+// Draw the items.
+// -> Only draw some of them, not all.
 var _index = array_last(self.index);
-var _items = struct_get_names(self.current.folders);
-var _count = array_length(_items);
+var _count = array_length(self.names);
 var _lower = max(0, _index - 4);
 var _upper = min(_count, _lower + 8);
 
 
-// Indicate there are more up, non-visible.
+// Indicate there are more upward, non-visible.
 if (_lower != 0)
 {
   self.printer.Print("...");
@@ -42,38 +46,31 @@ if (_lower != 0)
 // Draw current items.
 for(var i = _lower; i < _upper; i++)
 {
-  var _name = _items[i];
-  var _item = self.current.folders[$ _name ];
+  // Get the name and item.
+  var _name = self.names[i];
+  var _item = (
+    self.current.folders[$ _name] ?? 
+    self.current.files[$ _name]
+  );
   
   // Whether has a cursor.
-  var _cursor = (_item == _items[_index])
+  var _cursor = (_name == self.names[_index])
     ? ">> " 
     : "   "
   
-  self.printer.Print($"{_cursor} / {_item.name}");
+  // Whether is folder or not.
+  var _type = (_item.type == "folder")
+    ? " / " 
+    : " - "
+  
+  // Print the item.
+  self.printer.Print($"{_cursor}{_type}{_name}");
 }
 
 
-// Indicate there are more down, non-visible.
+// Indicate there are more downward, non-visible.
 if (_upper != _count)
 {
   self.printer.Print("...");
 }
 
-
-
-// Draw the files.
-self.printer.SetPos(768, 460);
-self.printer.Print("FILES =========");
-_items = struct_get_names(self.current.files);
-_count = array_length(_items);
-_upper = min(8, _count);
-for(var i = 0; i < _upper; i++)
-{
-  self.printer.Print($" - {_items[i]}");
-}
-
-if (_count != _upper)
-{
-  self.printer.Print("...");
-}

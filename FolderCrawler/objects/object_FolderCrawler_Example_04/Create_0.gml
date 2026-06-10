@@ -1,12 +1,12 @@
 /// @desc INITIALIZATION.
 
-event_inherited();
-
-// 
-self.label = "Example [4] utilizes parameters, finds all png's"
+// Just for drawing stuff.
+self.printer = new FolderCrawler_Printer();
 
 
+// Handle for crawler.
+self.handle = undefined;
 
-// This contains results.
-self.items = [ ];
 
+// Resulting images.
+self.images = [ ];

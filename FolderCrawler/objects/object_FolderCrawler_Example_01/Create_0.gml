@@ -1,5 +1,12 @@
 /// @desc INITIALIZATION.
 
-event_inherited();
+// Just for drawing stuff.
+self.printer = new FolderCrawler_Printer();
 
-self.label = "Example [1] Crawl the 'working_directory', bit different"
+
+// Handle for crawler.
+self.handle = undefined;
+
+
+// Resulting json.
+self.json = "...";

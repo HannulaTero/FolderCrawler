@@ -15,11 +15,13 @@ function FolderCrawler(_path, _descriptor=FolderCrawler_Descriptor()) constructo
   
   
   // Debug methods, related, checking what crawler is currently doing.
-  static DebugCount   = __FolderCrawler__DebugCount;
-  static DebugFolder  = __FolderCrawler__DebugFolder;
-  static DebugNext    = __FolderCrawler__DebugNext;
-  static DebugPath    = __FolderCrawler__DebugPath;
-  static DebugTime    = __FolderCrawler__DebugTime;
+  static DebugCount         = __FolderCrawler__DebugCount;
+  static DebugCountFiles    = __FolderCrawler__DebugCountFiles;
+  static DebugCountFolders  = __FolderCrawler__DebugCountFolders;
+  static DebugFolder        = __FolderCrawler__DebugFolder;
+  static DebugNext          = __FolderCrawler__DebugNext;
+  static DebugPath          = __FolderCrawler__DebugPath;
+  static DebugTime          = __FolderCrawler__DebugTime;
   
   
   // The usual methods.

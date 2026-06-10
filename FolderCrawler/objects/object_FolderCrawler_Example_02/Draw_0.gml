@@ -1,9 +1,17 @@
-// Inherit the parent event
-event_inherited();
+/// @desc DRAW.
 
 
-// Don't draw any items, if structure doesn't exist yet.
-if (self.structure == undefined)
+// Draw initial information
+self.printer
+  .SetPos(32, 128)
+  .Print($"Example [2] Give a path as a string.")
+  .Print($"---")
+  .Print($"Press [ENTER] to give a path and crawl.")
+  .Print($"---")
+
+
+// Don't draw any items, if handle doesn't exist yet.
+if (self.handle == undefined)
 {
   exit;
 }
@@ -11,7 +19,8 @@ if (self.structure == undefined)
 
 // Print information about current folder.
 self.printer.Print($"\n")
-  .Print($"Root folder : {self.structure.path}")
-  .Print($" -> Folder count : {struct_names_count(self.structure.folders)}")
-  .Print($" -> File count   : {struct_names_count(self.structure.files)}")
+  .Print($"Root folder : {self.handle.GetRoot().path}")
+  .Print($" -> Folder count : {self.handle.DebugCountFolders()}")
+  .Print($" -> File count   : {self.handle.DebugCountFiles()}")
+  .Print($" -> Time taken   : {self.handle.DebugTime() / 1000} ms")
   .Print($"\n");

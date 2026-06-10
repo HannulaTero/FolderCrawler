@@ -13,5 +13,15 @@ FolderCrawler_GetString("Give a directory", working_directory, function(_status,
   
   
   // Dispatch the crawl into given path.
-  self.handle = folder_crawl(_result);
+  self.handle = folder_crawl(_result, {
+    unsafe : true,
+    callback : function(_crawler, _context)
+    {
+      self.current = _crawler.GetRoot();
+      self.names = array_concat(
+        struct_get_names(self.current.folders), 
+        struct_get_names(self.current.files)
+      );
+    }
+  });
 });
