@@ -15,6 +15,12 @@ function __FolderCrawler_Iterator__Folder(_name)
     return;
   }
   
+  // Skip .git -folder.
+  if (_name == ".git")
+  {
+    return;
+  }
+  
   // Otherwise create new folder for given path.
   var _path = (self.folderCurrent.path + "\\" + _name);
   var _folder = new FolderCrawler_Folder(self.folderCurrent, _name, _path);

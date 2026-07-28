@@ -2,7 +2,9 @@
 
 /**
 * Handles crawling state and recursively iterating through folders and files.
+* 
 * ---
+* 
 * Read the descriptor for the possible arguments.
 * 
 * @param {Struct.FolderCrawler} _handle
